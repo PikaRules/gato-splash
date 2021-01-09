@@ -14,7 +14,9 @@ export function loadingSceneProvider() {
         fontSize: 18,
         fontStyle: 'italic',
         fontWeight: 'bold',
-        stroke: 'black',
+        fill: 'black',
+        stroke: 'white',
+        strokeThickness: 2,
         lineJoin: 'round'
     });
 

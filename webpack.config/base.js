@@ -43,7 +43,7 @@ module.exports = function() {
     // ng-annotate with babel
     config.module.rules.push({
         test: /\.js$/,
-        exclude: [/app\/vendor/, /node_modules/],
+        exclude: [/vendors/, /node_modules/],
         use: [{
             loader: 'babel-loader',
             options: {
@@ -55,9 +55,6 @@ module.exports = function() {
             },
         }]
     });
-
-    console.log('direname: ', __dirname);
-    console.log(path.resolve(__dirname, '../src/main.ts'));
 
     // template loader
     config.module.rules.push({
@@ -154,6 +151,11 @@ module.exports = function() {
         include: [path.resolve(__dirname, '../vendor')],
         exclude: /node_modules/
     });
+
+    config.resolve = {
+        extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
+        modules: [path.resolve(__dirname, '../src/'), path.resolve(__dirname, '../node_modules')]
+    };
 
 
     // ======== optimizaion ===============
