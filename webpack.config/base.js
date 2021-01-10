@@ -251,7 +251,8 @@ module.exports = function() {
             { from:  path.resolve(__dirname, '../src/assets/img/**/*.*'), to:  path.resolve(__dirname, '../dist/img'), flatten: true },
             { from:  path.resolve(__dirname, '../src/assets/locale/**/*.*'), to:  path.resolve(__dirname, '../dist/locale'), flatten: true },
             { from:  path.resolve(__dirname, '../src/assets/json/**/*.json'), to:  path.resolve(__dirname, '../dist/json'), flatten: true },
-            { from:  path.resolve(__dirname, '../src/assets/audio/**/*.*'), to:  path.resolve(__dirname, '../dist/audio'), flatten: true }
+            { from:  path.resolve(__dirname, '../src/assets/audio/**/*.*'), to:  path.resolve(__dirname, '../dist/audio'), flatten: true },
+            { from:  path.resolve(__dirname, '../electron-main.js'), to:  path.resolve(__dirname, '../dist/electron-main.js'), flatten: true }
         ]),
         new BumpFilePlugin({
             data: { version: version, appname: 'tsumuchicken', builtDate: new Date().toISOString() },

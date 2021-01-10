@@ -2,7 +2,7 @@
   "name": "tsumuchicken",
   "version": "1.0.0",
   "description": "juego feito",
-  "main": "electron-main.js",
+  "main": "./dist/electron-main.js",
   "scripts": {
     "start": "electron .",
     "setup": "npm install",
@@ -15,7 +15,8 @@
     "build:prod:debug": "cross-env BUILD_ENV=sandbox APP_ENV=production webpack  ",
     "build-analyzer-stats": "cross-env BUILD_ENV=sandbox APP_ENV=sandbox webpack --profile --json > stats.json",
     "build-analyzer-stats:min": "cross-env BUILD_ENV=production APP_ENV=production webpack --optimize-minimize --profile --json > stats.json",
-    "show-bundle-stats": "webpack-bundle-analyzer stats.json"
+    "show-bundle-stats": "webpack-bundle-analyzer stats.json",
+    "release-mac": "electron-packager . --overwrite --platform=darwin --arch=x64  --prune=true --out=release-builds"
   },
   "author": "martelgames@gmail.com",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "electron": "^11.1.1",
+    "electron-packager": "^15.2.0",
     "electron-webpack": "^2.8.2",
     "eslint": "^7.17.0",
     "file-loader": "^6.2.0",

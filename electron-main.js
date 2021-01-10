@@ -18,7 +18,7 @@ function createWindow () {
 
   console.log('dirname: ', __dirname);
 
-  win.loadURL(`file://${__dirname}/dist/index.html`).then(() => {
+  win.loadURL(`file://${__dirname}/index.html`).then(() => {
       console.log('success');
   }, (e) => {
     console.error('error cannot load');
