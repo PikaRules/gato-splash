@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { Environment } from './core/defaults.constant';
-import { SplashIcon } from '../app/core/assets-names.constant';
+import { Images } from '../app/core/assets-names.constant';
 
 const Container = PIXI.Container;
 const loader = PIXI.Loader.shared;
@@ -12,7 +12,7 @@ export function splashSceneProvider(onBackgroundClick?: () => void) {
     loadingScene.height = Environment.height;
 
     // splash icon
-    let splashSprite = new PIXI.Sprite(loader.resources[SplashIcon].texture);
+    let splashSprite = new PIXI.Sprite(loader.resources[Images.SplashIcon].texture);
     splashSprite.x = Environment.width / 2;
     splashSprite.y = Environment.height / 2 - 20;
     splashSprite.anchor.set(0.5, 0.5);
@@ -28,7 +28,7 @@ export function splashSceneProvider(onBackgroundClick?: () => void) {
         lineJoin: 'round'
     });
 
-    const loadingText = new PIXI.Text('Tap to start', style);
+    const loadingText = new PIXI.Text('Click to start', style);
     loadingText.x = Environment.width / 2;
     loadingText.y = Environment.height * 0.7;
     loadingText.anchor.set(0.5, 0.5);

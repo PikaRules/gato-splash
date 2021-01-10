@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js';
+import { Sounds } from '../core/assets-names.constant';
 import { Environment } from '../core/defaults.constant';
+import { getSound } from '../core/utils';
 
 
 export class StartGameCountDownRenderer {
@@ -29,6 +31,7 @@ export class StartGameCountDownRenderer {
         const animationDuration = 1000;
         const self = this;
 
+        getSound(Sounds.Ping1.key).play();
         this.animateNumber(self.currentText, animationDuration, scale, () => { self.animateNext(counter - 1, animationDuration, scale); });
     }
 
@@ -36,9 +39,11 @@ export class StartGameCountDownRenderer {
         let self = this;
         if ( counter > 0 ) {
             this.currentText.text = '' + counter;
+            getSound(Sounds.Ping1.key).play();
             this.animateNumber(this.currentText, animationDuration, scale, () => { self.animateNext(counter - 1, animationDuration, scale); });
         } else {
             this.currentText.text = 'start';
+            getSound(Sounds.Ping2.key).play();
             setTimeout(() => {
                 self.container.removeChild(self.currentText);
                 self.container = null;
@@ -59,9 +64,6 @@ export class StartGameCountDownRenderer {
             const maxBit = animationDuration * 0.8; // 100%
             const multiplier = Math.min(1, ((ellpasedTime * 100) / maxBit) / 100);
             const newScale = Math.max(1, scale - ((scale - 1) * multiplier));
-            // console.log(' multiplier: ', multiplier);
-            // console.log(' newScale: ', newScale);
-            console.log(' ellpasedTime: ', ellpasedTime);
             text.alpha = multiplier;
             text.scale.set(newScale, newScale);
             if ( ellpasedTime >= animationDuration ) {

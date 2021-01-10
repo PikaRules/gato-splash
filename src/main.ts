@@ -1,11 +1,16 @@
 
 import './assets/css/app.scss';
 import * as PIXI from 'pixi.js';
+import * as PIXI_SOUND from 'pixi-sound';
 import { Environment } from './app/core/defaults.constant';
 import { loadingSceneProvider } from './app/initial-loading.scene';
 import { loadAllResources } from './app/loader';
 import { splashSceneProvider } from './app/splash-screen.scene';
 import { BubblesGameController } from './app/bubbles-game/game.controller';
+import { Sounds } from './app/core/assets-names.constant';
+import { getSound } from './app/core/utils';
+
+const loader = PIXI.Loader.shared;
 
 const app = new PIXI.Application({
     width: Environment.width,
@@ -23,8 +28,11 @@ app.stage.addChild(loadingScene);
 loadAllResources( (ldr, resources) => {
     app.stage.removeChild(loadingScene);
     const splashScene = splashSceneProvider(() => {
-        app.stage.removeChild(splashScene);
-        bubbleGame.start(app);
+        getSound(Sounds.Accept1.key).play();
+        setTimeout(() => {
+            app.stage.removeChild(splashScene);
+            bubbleGame.start(app);
+        }, 500);
     });
     app.stage.addChild(splashScene);
 });
