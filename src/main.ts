@@ -10,6 +10,11 @@ import { BubblesGameController } from './app/bubbles-game/game.controller';
 import { Sounds } from './app/core/assets-names.constant';
 import { getSound } from './app/core/utils';
 
+// Apply the patch to PIXI
+import { install } from '@pixi/unsafe-eval';
+const pepe = install as (p: any) => void;
+pepe(PIXI);
+
 const loader = PIXI.Loader.shared;
 
 const app = new PIXI.Application({
