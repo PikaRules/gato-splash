@@ -28,12 +28,12 @@ module.exports = function() {
         path: path.resolve(__dirname, '../dist'),
         publicPath: "./"
     };
-    config.target = 'electron-main';
+    config.target = 'web';
     config.node = {
         // tell webpack that we actually want a working __dirname value
         // (ref: https://webpack.js.org/configuration/node/#node-__dirname)
         __dirname: false
-      };
+    };
 
     config.resolve = {
         extensions: [ '.tsx', '.ts', '.js' ]

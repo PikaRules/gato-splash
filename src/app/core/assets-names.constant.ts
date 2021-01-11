@@ -13,7 +13,8 @@ export const Images = {
     HeartLife: './img/heart-life.png',
     MeatBurst: './img/meat-burst.png',
     SharpGearTile: './img/sharp-gear-tile.png',
-    Firework1: './img/firework1.png'
+    Firework1: './img/firework1.png',
+    GatoTitle: './img/gato-name-title.png'
 };
 
 export const Sounds = {
