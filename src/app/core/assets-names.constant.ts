@@ -14,7 +14,8 @@ export const Images = {
     MeatBurst: './img/meat-burst.png',
     SharpGearTile: './img/sharp-gear-tile.png',
     Firework1: './img/firework1.png',
-    GatoTitle: './img/gato-name-title.png'
+    GatoTitle: './img/gato-name-title.png',
+    EndingBGPattern1: './img/ending-bg-pattern-1.png'
 };
 
 export const Sounds = {

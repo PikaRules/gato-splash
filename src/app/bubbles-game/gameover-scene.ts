@@ -1,7 +1,9 @@
 import * as PIXI from 'pixi.js';
+import { Images } from '../core/assets-names.constant';
 import { Environment } from '../core/defaults.constant';
 
 const Container = PIXI.Container;
+const loader = PIXI.Loader.shared;
 
 export interface GameOverScene {
     container: PIXI.Container;
@@ -25,6 +27,9 @@ export function gameOverSceneProvider(onBackgroundClick: Function): GameOverScen
 
     backgroundScene.addChild(bg);
 
+
+    const bgPattern1 = new PIXI.Sprite(loader.resources[Images.EndingBGPattern1].texture);
+    backgroundScene.addChild(bgPattern1);
 
     const style1 = new PIXI.TextStyle({
         fontSize: 32,
