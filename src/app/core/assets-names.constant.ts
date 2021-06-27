@@ -6,14 +6,19 @@ export const Images = {
     MenuDeadCatIcon: './img/cat-dead.png',
     MenuLifeCatIcon: './img/cat-life.png',
     MenuBottomBackgroundTile: './img/bottom-menu-tile.png',
-    KittenA: './img/kitten-a.png',
-    KittenB: './img/kitten-b.png',
-    KittenC: './img/kitten-c.png',
-    KittenD: './img/kitten-d.png',
+    KittenA: './img/gatox-gray.png',
+    KittenB: './img/gatox-orange.png',
+    KittenC: './img/gatox-rosa.png',
+    KittenD: './img/gatox-white.png',
+    KittenD1: './img/gatox-white1.png',
+    KittenD2: './img/gatox-white2.png',
+    KittenD3: './img/gatox-white3.png',
     HeartLife: './img/heart-life.png',
     MeatBurst: './img/meat-burst.png',
     SharpGearTile: './img/sharp-gear-tile.png',
-    Firework1: './img/firework1.png'
+    Firework1: './img/firework1.png',
+    GatoTitle: './img/gato-name-title.png',
+    EndingBGPattern1: './img/ending-bg-pattern-1.png'
 };
 
 export const Sounds = {

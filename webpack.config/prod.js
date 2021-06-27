@@ -16,9 +16,17 @@ module.exports = function() {
     config.module = { rules: [] };
     config.mode = 'production';
 
+    config.target = 'electron-renderer';
+
     config.entry = {
         app: './src/main.ts'
     };
+
+    config.node = {
+        // tell webpack that we actually want a working __dirname value
+        // (ref: https://webpack.js.org/configuration/node/#node-__dirname)
+        __dirname: false
+      };
 
     const showSourceMap = false;
 

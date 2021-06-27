@@ -33,6 +33,7 @@ export class BallSpammer {
     private waitingForceSpam = false;
     private keyboardTextStyle: PIXI.TextStyle;
     private currentDificulty = -1;
+    private kittenDTextures = new Array<PIXI.Texture>();
 
     public start() {
         const self = this;
@@ -47,6 +48,13 @@ export class BallSpammer {
         this.kittensTextures.push(loader.resources[Images.KittenB].texture);
         this.kittensTextures.push(loader.resources[Images.KittenC].texture);
         this.kittensTextures.push(loader.resources[Images.KittenD].texture);
+
+        this.kittenDTextures.push(loader.resources[Images.KittenD1].texture);
+        this.kittenDTextures.push(loader.resources[Images.KittenD2].texture);
+        this.kittenDTextures.push(loader.resources[Images.KittenD3].texture);
+        this.kittenDTextures.push(loader.resources[Images.KittenD3].texture);
+        this.kittenDTextures.push(loader.resources[Images.KittenD2].texture);
+        this.kittenDTextures.push(loader.resources[Images.KittenD1].texture);
 
         if ( this._hasStarted ) { return; }
         this._hasStarted = true;
@@ -179,6 +187,13 @@ export class BallSpammer {
 
     private getBallSprite(): CustomSprite {
         const index = randomInt(0, this.kittensTextures.length - 1);
+        if ( index === 3 ) {
+            const animatedSprite = new PIXI.AnimatedSprite(this.kittenDTextures);
+            animatedSprite.loop = true;
+            animatedSprite.animationSpeed = 0.2;
+            animatedSprite.play();
+            return animatedSprite;
+        }
         const texture = this.kittensTextures[index];
         const sprite = new PIXI.Sprite(texture) as CustomSprite;
         return sprite;

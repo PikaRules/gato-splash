@@ -1,7 +1,9 @@
 import * as PIXI from 'pixi.js';
+import { Images } from '../core/assets-names.constant';
 import { Environment } from '../core/defaults.constant';
 
 const Container = PIXI.Container;
+const loader = PIXI.Loader.shared;
 
 export interface GameOverScene {
     container: PIXI.Container;
@@ -17,7 +19,7 @@ export function gameOverSceneProvider(onBackgroundClick: Function): GameOverScen
     let bg = new PIXI.Sprite(PIXI.Texture.WHITE);
     bg.width = Environment.width;
     bg.height = Environment.height;
-    bg.tint = 0xffffff;
+    bg.tint = 0xee212f;
     if ( onBackgroundClick ) {
         bg.interactive = true;
         bg.on('click', onBackgroundClick);
@@ -26,25 +28,41 @@ export function gameOverSceneProvider(onBackgroundClick: Function): GameOverScen
     backgroundScene.addChild(bg);
 
 
+    const bgPattern1 = new PIXI.Sprite(loader.resources[Images.EndingBGPattern1].texture);
+    backgroundScene.addChild(bgPattern1);
+
     const style1 = new PIXI.TextStyle({
-        fontFamily: 'Arial',
         fontSize: 32,
-        fontWeight: 'bold',
-        fill: 'black',
-        stroke: 'black'
+        fontFamily: 'Arial Black',
+        fill: 'white',
+        stroke: 'black',
+        strokeThickness: 3,
+        dropShadow: true,
+        dropShadowAngle: 0.5235987755982988,
+        dropShadowColor: 'black',
+        dropShadowDistance: 5
     });
 
     const style2 = new PIXI.TextStyle({
         fontFamily: 'Arial',
         fontSize: 22,
-        fontWeight: 'bold',
-        fill: 'blue'
+        fill: '#fdff00',
+        dropShadow: true,
+        dropShadowAngle: 0.5235987755982988,
+        dropShadowColor: 'black',
+        dropShadowDistance: 1
     });
 
     const style3 = new PIXI.TextStyle({
-        fontFamily: 'Arial',
         fontSize: 18,
-        fill: 'black'
+        fontFamily: 'Arial',
+        strokeThickness: 1,
+        fill: 'white',
+        stroke: 'black',
+        dropShadow: true,
+        dropShadowAngle: 0.5235987755982988,
+        dropShadowColor: 'black',
+        dropShadowDistance: 2
     });
 
     const score = new PIXI.Text(`new top score: 0`, style3);
@@ -65,7 +83,7 @@ export function gameOverSceneProvider(onBackgroundClick: Function): GameOverScen
     gameOverText.y = Environment.height * 0.3;
 
     const retryText = new PIXI.Text('Click to retry', style2);
-    gameOverText.anchor.set(0.5, 0.5);
+    retryText.anchor.set(0.5, 0.5);
     retryText.x = Environment.width / 2;
     retryText.y = Environment.height * 0.8;
 

@@ -195,6 +195,7 @@ export class BubblesGameController {
     private playCircleLightSprite(ball: Ball) {
         const self = this;
         const sprite = this.createCircleLightSprite();
+        if ( !sprite ) { return; }
         sprite.anchor.set(0.5, 0.5);
         sprite.x = ball.sprite.x;
         sprite.y = ball.sprite.y;
@@ -331,7 +332,7 @@ export class BubblesGameController {
         return sprite;
     }
 
-    private createCircleLightSprite() {
+    private createCircleLightSprite(): PIXI.AnimatedSprite | void {
 
         if ( this.meatBurstSprites.length === 0 ) {
             const base = loader.resources[Images.Firework1].texture;
@@ -355,9 +356,12 @@ export class BubblesGameController {
             this.lightCircleSprites = [textrure1, textrure2, textrure3, textrure4, textrure5];
         }
 
-        const sprite = new PIXI.AnimatedSprite(this.lightCircleSprites);
+        if ( this.lightCircleSprites && this.lightCircleSprites.length > 0 ) {
+            const sprite = new PIXI.AnimatedSprite(this.lightCircleSprites);
+            return sprite;
+        }
 
-        return sprite;
+        return;
     }
 
 }
